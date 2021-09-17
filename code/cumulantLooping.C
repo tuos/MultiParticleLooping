@@ -43,17 +43,17 @@ void cumulantLooping(){
        for(int i1=0; i1<nParticle; i1++){
 
          //for(int i2=0; i2<nParticle; i2++){
-         for(int i2=i1+1; i2<nParticle; i2++){
+         for(int i2=i1+1; i2<nParticle; i2++){ // save time by a factor of 2
 
            if( fabs(eta[i1] - eta[i2])<gapSize ) continue;
            histEvtCosPhi2->Fill( cos(2*(phi[i1] - phi[i2])) );
 
-           //for(int i3=0; i3<nParticle; i3++){
-           for(int i3=i1+1; i3<nParticle; i3++){
+           //for(int i3=0; i3<nParticle; i3++){ 
+           for(int i3=i1+1; i3<nParticle; i3++){ // save time by another factor of 2
 
              if( fabs(eta[i1] - eta[i3])<gapSize || fabs(eta[i2] - eta[i3])<gapSize ) continue;
              //for(int i4=0; i4<nParticle; i4++){
-             for(int i4=i3+1; i4<nParticle; i4++){
+             for(int i4=i3+1; i4<nParticle; i4++){ // save time by another factor of 2
                if( fabs(eta[i1] - eta[i4])<gapSize || fabs(eta[i2] - eta[i4])<gapSize || fabs(eta[i3] - eta[i4])<gapSize ) continue;
                histEvtCosPhi4->Fill( cos(2*(phi[i1] + phi[i2] - phi[i3] - phi[i4])) );
              }
